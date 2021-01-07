@@ -7,6 +7,11 @@ class UserSignupForm(forms.Form):
     password = forms.CharField(label='Password:', widget=forms.PasswordInput)
     confirm_password = forms.CharField(label='Confirm password:', widget=forms.PasswordInput)
 
+    def __init__(self, *args, **kwargs):
+        super(UserSignupForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control field-d'
+
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')

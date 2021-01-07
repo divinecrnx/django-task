@@ -2,12 +2,34 @@
 
 {% block content %}
 
-<h1>Test paragraph for signup</h1>
+<div class="f-container">
+    <h1 class="form-title">Sign Up</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="mb-3">
+            {{ form.username.errors }}
+            <label class="form-label" for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        <div class="mb-3">
+            {{ form.email.errors }}
+            <label class="form-label" for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+        </div>
+        <div class="mb-3">
+            {{ form.password.errors }}
+            <label class="form-label" for="{{ form.password.id_for_label }}">Password:</label>
+            {{ form.password }}
+        </div>
+        <div class="mb-3">
+            {{ form.confirm_password.errors }}
+            <label class="form-label" for="{{ form.confirm_password.id_for_label }}">Confirm password:</label>
+            {{ form.confirm_password }}
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>
 
-<form action="." method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
 
 {% endblock %}
