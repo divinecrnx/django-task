@@ -23,6 +23,64 @@ label, .form-title {
     color: #c9d1d9;
 }
 
+#main-outer-banner {
+    padding: 50px 0;
+    text-align: center;
+}
+
+#main-inner-banner {
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 4.16667%;
+}
+
+em {
+    font-family: "Roboto", Corbel, Avenir, "Lucida Grande", "Lucida Sans", sans-serif;
+    font-weight: 300;
+    line-height: 1.3;
+    font-size: 3.6rem;
+    font-style: normal;
+    color: #f9fafb;
+}
+
+.signup-b {
+    line-height: 1.3;
+    outline: 0;
+    font-family: "Roboto", Corbel, Avenir, "Lucida Grande", "Lucida Sans", sans-serif;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0;
+    font-size: 1.8rem;
+    display: inline-block;
+    padding: 1.5rem 40px 1.5rem;
+    margin-bottom: 40px;
+    color: #f9fafb;
+    border: 0;
+    font-weight: 700;
+    background-color: #238636;
+}
+
+#login-hint {
+    color: #797979;
+    font-size: 14px;
+}
+
+.inline-l {
+    text-decoration: none;
+    color: #b2b4b7;
+}
+
+.inline-l:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.signup-b:hover {
+    color: #f9fafb;
+    background-color: #2ea043;
+}
+
 .errorlist {
     color: red;
     list-style-type: none;
