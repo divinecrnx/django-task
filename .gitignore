@@ -1,2 +1,3 @@
+mysite/__pycache__
 mysite/*/__pycache__
 mysite/*/migrations/__pycache__
