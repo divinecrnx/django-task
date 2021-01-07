@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #161b22;
+    padding: 15px 20px;
+}
+
+#logo {
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24pt;
+}
+
+body {
+    background-color: #0d1117;
+}

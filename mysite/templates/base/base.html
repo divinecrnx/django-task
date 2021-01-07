@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/main.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mr.Motor's Insurance{% endblock %}</title>
 </head>
 <body>
-    <header>This is a test header.</header>
+    <header id="banner">
+        <h1 id="logo">Mr. Motor's Insurance</h1>
+    </header>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
