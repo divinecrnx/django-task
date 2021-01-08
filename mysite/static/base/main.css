@@ -14,6 +14,10 @@ header#banner {
     text-decoration: none;
 }
 
+.form-label {
+    font-size: 11pt;
+}
+
 #logo {
     color: #f0f6fc;
     font-family: Georgia, 'Times New Roman', Times, serif;

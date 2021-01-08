@@ -70,5 +70,6 @@ class Claim(models.Model):
         )
     
     photo = models.ImageField(upload_to='images/')
-    insurance_cover_note_pdf = models.FileField(upload_to='images/', validators=[validate_pdf_file_extension])
+    insurance_cover_note_pdf = models.FileField(upload_to='pdfs/', validators=[validate_pdf_file_extension])
+    status = models.CharField(max_length=11, default='In Progress')
 

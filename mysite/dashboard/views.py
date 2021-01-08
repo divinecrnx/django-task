@@ -13,9 +13,9 @@ def index(request):
 
 def submit(request):
 
-    def handle_uploaded_file(f, filename):
+    def handle_uploaded_file(f, f_type, filename):
 
-        output = Path(__file__).resolve().parent.parent / 'media/images' / filename
+        output = Path(__file__).resolve().parent.parent / 'media' / f_type / filename
 
         with open(output, 'wb') as destination:
             for chunk in f.chunks():
@@ -56,8 +56,8 @@ def submit(request):
                 photo=photo,
                 insurance_cover_note_pdf=insurance_cover_note_pdf,
             )
-            handle_uploaded_file(request.FILES['photo'], photo.name)
-            handle_uploaded_file(request.FILES['insurance_cover_note_pdf'], insurance_cover_note_pdf.name)
+            handle_uploaded_file(request.FILES['photo'], 'images', photo.name)
+            handle_uploaded_file(request.FILES['insurance_cover_note_pdf'], 'pdfs', insurance_cover_note_pdf.name)
             claim.save()           
 
             messages.success(request, 'Claim submitted!')
