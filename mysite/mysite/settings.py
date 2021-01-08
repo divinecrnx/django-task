@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'signup.apps.SignupConfig',
     'login.apps.LoginConfig',
     'logout.apps.LogoutConfig',
+    'dashboard.apps.DashboardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,3 +132,6 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = 'index:index' # CHANGE THIS LATER
 LOGOUT_REDIRECT_URL = 'index:index'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
