@@ -8,6 +8,9 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
+
+    if request.user.is_authenticated:
+        return redirect('dashboard:index')
     
     if request.method == 'POST':
 

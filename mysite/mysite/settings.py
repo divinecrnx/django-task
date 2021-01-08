@@ -130,8 +130,9 @@ STATICFILES_DIRS = [
 
 # Misc
 
-LOGIN_REDIRECT_URL = 'index:index' # CHANGE THIS LATER
+LOGIN_REDIRECT_URL = 'login:index'
 LOGOUT_REDIRECT_URL = 'index:index'
+LOGIN_URL = 'login:index'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'

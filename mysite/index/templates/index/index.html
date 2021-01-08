@@ -4,14 +4,20 @@
 <div id="main-outer-banner">
     <div id="main-inner-banner">
         <p>
-            <em>Mr. Motors Insurance ensures transparency and reliability. We gladly serve those who need it the most :)</em>
+            <em>Mr. Motors Insurance ensures transparency and reliability. We gladly serve those who need it the most.</em>
         </p>
+        {% if not user.is_authenticated %}
         <p>
             <a href="/signup/" class="signup-b">Get started with Mr. Motors</a>
         </p>
         <p id="login-hint">
             Already have an account? Login <a class="inline-l" href="/login">here</a>.
         </p>
+        {% else %}
+        <p>
+            <em>😁</em>
+        </p>
+        {% endif %}
     </div>
 </div>
 

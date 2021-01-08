@@ -1,16 +1,20 @@
 from django.shortcuts import render, redirect
-from .forms import ClaimForm
-from .models import Claim
+from django.contrib.auth.decorators import login_required
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib import messages
 from django.urls import reverse
+from .forms import ClaimForm
+from .models import Claim
 from pathlib import Path
+
 
 # Create your views here.
 
+@login_required
 def index(request):
     return render(request, 'dashboard/dashboard.html')
 
+@login_required
 def submit(request):
 
     def handle_uploaded_file(f, f_type, filename):
@@ -68,5 +72,6 @@ def submit(request):
     
     return render(request, 'dashboard/submit.html', {'form': form})
 
+@login_required
 def manage(request):
     return render(request, 'dashboard/manage.html')
