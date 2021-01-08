@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
+from django.views import generic
 from .forms import ClaimForm
 from .models import Claim
 from pathlib import Path
@@ -10,9 +12,15 @@ from pathlib import Path
 
 # Create your views here.
 
-@login_required
-def index(request):
-    return render(request, 'dashboard/dashboard.html')
+class IndexView(generic.ListView):
+    template_name = 'dashboard/dashboard.html'
+    context_object_name = 'claims'
+
+    def get_queryset(self):
+
+        return Claim.objects.filter(
+            user=self.request.user
+        ).order_by('-id')
 
 @login_required
 def submit(request):
@@ -45,6 +53,7 @@ def submit(request):
             insurance_cover_note_pdf = form.cleaned_data['insurance_cover_note_pdf']
 
             claim = Claim(
+                user=request.user,
                 fullname=fullname,
                 email=email,
                 mobile_num=mobile_num,
@@ -73,5 +82,6 @@ def submit(request):
     return render(request, 'dashboard/submit.html', {'form': form})
 
 @login_required
-def manage(request):
+def manage(request, claim_id):
+    claim = get_object_or_404(Claim, pk=claim_id)
     return render(request, 'dashboard/manage.html')

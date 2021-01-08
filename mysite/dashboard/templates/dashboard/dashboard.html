@@ -2,6 +2,25 @@
 
 {% block content %}
 
-
+<div class="container mt-5">
+    <h1 class="form-title">My claims</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for claim in claims %}
+        <div class="col">
+            <div class="card h-100 text-dark bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{ claim.accident_dt }}</div>
+                <div class="card-body">
+                    <div class="d-grid gap-2 mb-2">
+                        <a href="{% url 'dashboard:manage' claim.id %}" class="btn btn-outline-secondary">{% if claim.status == 'In Progress' %}Manage{% else %}View{% endif %}</a>
+                    </div>
+                    <h5 class="card-title">{{ claim.vehicle_model_year }} {{ claim.vehicle_model }} {{ claim.vehicle_no }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ claim.location }}</h6>
+                </div>
+                <div class="card-footer text-muted">{{ claim.status }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
