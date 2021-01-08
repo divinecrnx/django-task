@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'index.apps.IndexConfig',
     'signup.apps.SignupConfig',
+    'login.apps.LoginConfig',
+    'logout.apps.LogoutConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,3 +126,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+# Misc
+
+LOGIN_REDIRECT_URL = 'index:index' # CHANGE THIS LATER
+LOGOUT_REDIRECT_URL = 'index:index'

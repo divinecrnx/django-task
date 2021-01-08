@@ -12,7 +12,12 @@
 </head>
 <body>
     <header id="banner">
-        <h1 id="logo">Mr. Motor's Insurance</h1>
+        <a href="{% url 'index:index' %}">
+            <h1 id="logo">Mr. Motor's Insurance</h1>
+        </a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout:index' %}" class="btn btn-outline-danger">Logout</a>
+        {% endif %}
     </header>
     {% if messages %}
         {% for message in messages %}

@@ -3,15 +3,22 @@
     padding: 0;
 }
 
-header {
+header#banner {
     background-color: #161b22;
     padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#banner > a {
+    text-decoration: none;
 }
 
 #logo {
     color: #f0f6fc;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 24pt;
+    margin: 0;
 }
 
 body {
