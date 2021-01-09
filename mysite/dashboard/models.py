@@ -97,3 +97,8 @@ class Claim(models.Model):
         default='In Progress',
     )
 
+    def delete(self, *args, **kwargs):
+        self.photo.delete()
+        self.insurance_cover_note_pdf.delete()
+        super().delete(*args, **kwargs)  # Call the "real" save() method.
+
