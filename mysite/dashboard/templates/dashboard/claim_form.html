@@ -2,7 +2,7 @@
 
 <div class="f-container">
     <h1 class="form-title">{{ f_type }} Claim</h1>
-    <form enctype="multipart/form-data" action="." method="post">
+    <form enctype="multipart/form-data" action="{% if f_type == 'Submit' %}{% url 'dashboard:submit' %}{% else %}{% url 'dashboard:manage' cid %}{% endif %}" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
         <div class="mb-3">

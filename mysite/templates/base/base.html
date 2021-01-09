@@ -16,7 +16,11 @@
             <h1 id="logo">Mr. Motor's Insurance</h1>
         </a>
         {% if user.is_authenticated %}
-        <a href="{% url 'logout:index' %}" class="btn btn-outline-danger">Logout</a>
+        <div class="right-controls">
+            <a href="{% url 'dashboard:submit' %}" class="btn btn-outline-primary">New claim</a>
+            <a href="{% url 'dashboard:index' %}" class="btn btn-outline-success">Dashboard</a>
+            <a href="{% url 'logout:index' %}" class="btn btn-outline-danger">Logout</a>
+        </div>
         {% endif %}
     </header>
     {% if messages %}

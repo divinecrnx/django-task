@@ -64,12 +64,15 @@ class Claim(models.Model):
     )
 
     def validate_pdf_file_extension(value):
-        print(value.file.content_type)
         
-        if value.file.content_type != 'application/pdf':
-            raise ValidationError(
-            'Invalid file type. Only .pdf files are accepted.'
-        )
+        # This try is for django-admin. content type cannot be evaluated because it doesn't exist
+        try:
+            if value.file.content_type != 'application/pdf':
+                raise ValidationError(
+                'Invalid file type. Only .pdf files are accepted.'
+            )
+        except:
+            pass
     
     def img_user_directory_path(instance, filename):
         return 'user_{0}/images/{1}'.format(instance.user.username, filename)

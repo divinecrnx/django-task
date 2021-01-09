@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="f-container">
+    <div class="card text-dark bg-light mb-3">
+        <div class="card-header">{{ claim.status }}</div>
+        <div class="card-body">
+            <h5 class="card-title">Name:</h5>
+            <p class="card-text">{{ claim.fullname }}</p>
+            <h5 class="card-title">Email:</h5>
+            <p class="card-text">{{ claim.email }}</p>
+            <h5 class="card-title">Mobile num:</h5>
+            <p class="card-text">{{ claim.mobile_num }}</p>
+            <h5 class="card-title">Model Year:</h5>
+            <p class="card-text">{{ claim.vehicle_model_year }}</p>
+            <h5 class="card-title">Model:</h5>
+            <p class="card-text">{{ claim.vehicle_model }}</p>
+            <h5 class="card-title">Registration num:</h5>
+            <p class="card-text">{{ claim.vehicle_no }}</p>
+            <h5 class="card-title">Accident date and time:</h5>
+            <p class="card-text">{{ claim.accident_dt }}</p>
+            <h5 class="card-title">Location:</h5>
+            <p class="card-text">{{ claim.location }}</p>
+            <h5 class="card-title">Type of loss:</h5>
+            <p class="card-text">{{ claim.loss_type }}</p>
+            <h5 class="card-title">Description:</h5>
+            <p class="card-text">{{ claim.loss_desc }}</p>
+            <h5 class="card-title">Lodged police report?:</h5>
+            <p class="card-text">{{ claim.pr_lodged_inq }}</p>
+            <h5 class="card-title">Anybody injured?:</h5>
+            <p class="card-text">{{ claim.inq_injury }}</p>
+        </div>
+        <div class="card-body">
+            <a href="/media/{{ claim.photo }}" class="card-link">Photo</a>
+            <a href="/media/{{ claim.insurance_cover_note_pdf }}" class="card-link">Insurance cover note</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
