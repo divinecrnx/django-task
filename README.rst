@@ -12,5 +12,8 @@ Clone this repository. Then, install all the required python packages like so:
 Admin account
 -----
 
-No need to create a superuser using manage.py. You can do so by running the server and signing up on the website itself 
-and then logging in to django-admin after.
+An agent superuser account has already been created:
+
+Username: ``agent``
+password ``1234``
+
