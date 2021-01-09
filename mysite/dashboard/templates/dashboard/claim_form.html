@@ -100,11 +100,11 @@
         </div>
         <input class="btn btn-success mb-2" type="submit" value="Submit">
     </form>
-    {% endif %}
     <p style="color:#fff">Delete the claim?</p>
     <div class="d-grid">
         <a href="{% url 'dashboard:manage' link.id %}/delete" role="button" class="btn btn-danger">Delete</a>
     </div>
+    {% endif %}
 </div>
 
 {% endblock %}
