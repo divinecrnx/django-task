@@ -102,3 +102,6 @@ class Claim(models.Model):
         self.insurance_cover_note_pdf.delete()
         super().delete(*args, **kwargs)  # Call the "real" save() method.
 
+    def __str__(self):
+        return self.vehicle_no + " - " + self.vehicle_model
+
