@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.auth.models import User
+from django.forms.models import model_to_dict
 from django.contrib import messages
 from django.urls import reverse
 from django.views import generic
@@ -79,9 +80,11 @@ def submit(request):
         form = ClaimForm()
 
     
-    return render(request, 'dashboard/submit.html', {'form': form})
+    return render(request, 'dashboard/submit.html', {'form': form, 'f_type': 'Submit'})
 
 @login_required
 def manage(request, claim_id):
-    claim = get_object_or_404(Claim, pk=claim_id)
-    return render(request, 'dashboard/manage.html')
+    data = Claim.objects.get(id=claim_id)
+    form = ClaimForm(model_to_dict(data))
+
+    return render(request, 'dashboard/manage.html', {'form': form, 'f_type': 'Manage'})
