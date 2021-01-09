@@ -71,8 +71,14 @@ class Claim(models.Model):
             'Invalid file type. Only .pdf files are accepted.'
         )
     
-    photo = models.ImageField(upload_to='images/')
-    insurance_cover_note_pdf = models.FileField(upload_to='pdfs/', validators=[validate_pdf_file_extension])
+    def img_user_directory_path(instance, filename):
+        return 'user_{0}/images/{1}'.format(instance.user.username, filename)
+    
+    def pdf_user_directory_path(instance, filename):
+        return 'user_{0}/pdfs/{1}'.format(instance.user.username, filename)
+    
+    photo = models.ImageField(upload_to=img_user_directory_path)
+    insurance_cover_note_pdf = models.FileField(upload_to=pdf_user_directory_path, validators=[validate_pdf_file_extension])
     
     in_p = 'In Progress'
     acp = 'Accepted'
