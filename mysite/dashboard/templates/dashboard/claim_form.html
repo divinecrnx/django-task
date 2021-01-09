@@ -65,6 +65,7 @@
             <label class="form-label" for="{{ form.inq_injury.id_for_label }}">Anyone else injured?:</label>
             {{ form.inq_injury }}
         </div>
+        {% if f_type == 'Submit' %}
         <div class="mb-3">
             {{ form.photo.errors }}
             <label class="form-label" for="{{ form.photo.id_for_label }}">Photo:</label>
@@ -75,8 +76,35 @@
             <label class="form-label" for="{{ form.insurance_cover_note_pdf.id_for_label }}">Cover note (in PDF):</label>
             {{ form.insurance_cover_note_pdf }}
         </div>
-        <input class="btn btn-primary" type="submit" value="Submit">
+        {% endif %}
+        <input class="btn btn-success mb-2" type="submit" value="Submit">
     </form>
+    {% if f_type == 'Manage' %}
+    <form enctype="multipart/form-data" action="{% if f_type == 'Submit' %}{% url 'dashboard:submit' %}{% else %}{% url 'dashboard:manage' cid %}{% endif %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form_photo.photo.errors }}
+            <label class="form-label" for="{{ form_photo.photo.id_for_label }}">Photo:</label>
+            <a href="{{ link.photo.url }}" class="link-primary small">Current</a>
+            {{ form_photo.photo }}
+        </div>
+        <input class="btn btn-success mb-2" type="submit" value="Submit">
+    </form>
+    <form enctype="multipart/form-data" action="{% if f_type == 'Submit' %}{% url 'dashboard:submit' %}{% else %}{% url 'dashboard:manage' cid %}{% endif %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form_ins.insurance_cover_note_pdf.errors }}
+            <label class="form-label" for="{{ form_ins.insurance_cover_note_pdf.id_for_label }}">Cover note (in PDF):</label>
+            <a href="{{ link.insurance_cover_note_pdf.url }}" class="link-primary small">Current</a>
+            {{ form_ins.insurance_cover_note_pdf }}
+        </div>
+        <input class="btn btn-success mb-2" type="submit" value="Submit">
+    </form>
+    {% endif %}
+    <p style="color:#fff">Delete the claim?</p>
+    <div class="d-grid">
+        <a href="{% url 'dashboard:manage' link.id %}/delete" role="button" class="btn btn-danger">Delete</a>
+    </div>
 </div>
 
 {% endblock %}

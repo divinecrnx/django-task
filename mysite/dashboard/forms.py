@@ -26,3 +26,27 @@ class ClaimForm(forms.ModelForm):
         super(ClaimForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control field-d'
+
+class ManageClaimForm(ClaimForm):
+    class Meta:
+        model = Claim
+        exclude = (
+            'user',
+            'photo',
+            'insurance_cover_note_pdf',
+            'status',
+        )
+
+class ManageClaimPhotoForm(ClaimForm):
+    class Meta:
+        model = Claim
+        fields = (
+            'photo',
+        )
+
+class ManageClaimInsForm(ClaimForm):
+    class Meta:
+        model = Claim
+        fields = (
+            'insurance_cover_note_pdf',
+        )
