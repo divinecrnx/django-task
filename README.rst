@@ -15,5 +15,6 @@ Admin account
 An agent superuser account has already been created:
 
 Username: ``agent``
-password ``1234``
+
+Password: ``1234``
 
