@@ -30,6 +30,11 @@ class DashboardViewTests(TestCase):
             photo=SimpleUploadedFile('test.png', content='', content_type='image/png'),
             insurance_cover_note_pdf=SimpleUploadedFile('test.pdf', content='', content_type='application/pdf'),
         )
+
+    def manage_claim(self):
+        edit_claim = self.create_claim()
+        edit_claim.vehicle_no = 'DEF 456'
+        edit_claim.save()
     
     def test_login_requirement(self):
         response = self.client.get(reverse('dashboard:index'))
@@ -40,14 +45,22 @@ class DashboardViewTests(TestCase):
         response = self.client.get(reverse('dashboard:index'))
         self.assertEqual(response.status_code, 302)
 
-    def test_no_claims(self):
+    def test_no_claim(self):
         response = self.client.get(reverse('dashboard:index'))
         self.assertQuerysetEqual(response.context['claims'], [])
 
-    def test_yes_claims(self):
+    def test_yes_claim(self):
         self.create_claim()
         response = self.client.get(reverse('dashboard:index'))
         self.assertQuerysetEqual(
             response.context['claims'],
             ['<Claim: ABC 123 - Proton Persona>']
+        )
+
+    def test_edit_claim(self):
+        self.manage_claim()
+        response = self.client.get(reverse('dashboard:index'))
+        self.assertQuerysetEqual(
+            response.context['claims'],
+            ['<Claim: DEF 456 - Proton Persona>']
         )
