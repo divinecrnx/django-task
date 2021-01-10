@@ -19,6 +19,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='claim',
             name='insurance_cover_note_pdf',
-            field=models.FileField(upload_to='pdfs/', validators=[dashboard.models.Claim.validate_pdf_file_extension]),
+            field=models.FileField(upload_to='pdfs/', validators=[dashboard.models.Claim]),
         ),
     ]

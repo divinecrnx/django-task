@@ -62,17 +62,6 @@ class Claim(models.Model):
         choices=INQ_INJURY_CHOICES,
         default=NO,
     )
-
-    def validate_pdf_file_extension(value):
-        
-        # This try is for django-admin. content type cannot be evaluated because it doesn't exist
-        try:
-            if value.file.content_type != 'application/pdf':
-                raise ValidationError(
-                'Invalid file type. Only .pdf files are accepted.'
-            )
-        except:
-            pass
     
     def img_user_directory_path(instance, filename):
         return 'user_{0}/images/{1}'.format(instance.user.username, filename)
@@ -81,7 +70,7 @@ class Claim(models.Model):
         return 'user_{0}/pdfs/{1}'.format(instance.user.username, filename)
     
     photo = models.ImageField(upload_to=img_user_directory_path)
-    insurance_cover_note_pdf = models.FileField(upload_to=pdf_user_directory_path, validators=[validate_pdf_file_extension])
+    insurance_cover_note_pdf = models.FileField(upload_to=pdf_user_directory_path)
     
     in_p = 'In Progress'
     acp = 'Accepted'

@@ -22,6 +22,13 @@ class ClaimForm(forms.ModelForm):
             'insurance_cover_note_pdf'
         ]
 
+    def clean_insurance_cover_note_pdf(self):
+        file = self.cleaned_data.get('insurance_cover_note_pdf')
+        if not file.content_type == 'application/pdf':
+            raise forms.ValidationError('File must be a PDF document.')
+        else:
+            return file
+
     def __init__(self, *args, **kwargs):
         super(ClaimForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
