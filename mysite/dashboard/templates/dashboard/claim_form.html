@@ -82,6 +82,7 @@
     {% if f_type == 'Manage' %}
     <form enctype="multipart/form-data" action="{% if f_type == 'Submit' %}{% url 'dashboard:submit' %}{% else %}{% url 'dashboard:manage' cid %}{% endif %}" method="post">
         {% csrf_token %}
+        {{ form.non_field_errors }}
         <div class="mb-3">
             {{ form_photo.photo.errors }}
             <label class="form-label" for="{{ form_photo.photo.id_for_label }}">Photo:</label>
@@ -92,6 +93,7 @@
     </form>
     <form enctype="multipart/form-data" action="{% if f_type == 'Submit' %}{% url 'dashboard:submit' %}{% else %}{% url 'dashboard:manage' cid %}{% endif %}" method="post">
         {% csrf_token %}
+        {{ form.non_field_errors }}
         <div class="mb-3">
             {{ form_ins.insurance_cover_note_pdf.errors }}
             <label class="form-label" for="{{ form_ins.insurance_cover_note_pdf.id_for_label }}">Cover note (in PDF):</label>
